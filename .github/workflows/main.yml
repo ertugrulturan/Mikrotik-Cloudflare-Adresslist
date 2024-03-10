@@ -1,0 +1,36 @@
+name: Cloudflare IP Updater
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  update_ip_list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install curl
+        run: sudo apt-get install curl -y
+
+      - name: Fetch Cloudflare IP list
+        run: |
+          ips=$(curl -s https://www.cloudflare.com/ips-v4/)
+          echo "$ips" > CloudflareIPs.txt
+
+      - name: Generate RouterOS script
+        run: |
+          routeros_script="/ip firewall address-list\n"
+          while IFS= read -r ip; do
+            routeros_script+="add address=$ip list=CloudflareRoute comment=CloudflareRoute\n"
+          done < CloudflareIPs.txt
+          echo "$routeros_script" > CloudflareRoute.rsc
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add CloudflareRoute.rsc
+          git commit -m "Update Cloudflare IP list"
+          git push
