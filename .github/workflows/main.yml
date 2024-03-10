@@ -21,7 +21,7 @@ jobs:
 
       - name: Fetch Cloudflare IP list
         run: |
-          ips=$(curl -s https://www.cloudflare.com/ips-v4/)
+          ips=$(curl -s https://www.cloudflare.com/ips-v4/ | grep -v '^#')
           echo "$ips" > CloudflareIPs.txt
 
       - name: Generate RouterOS script
