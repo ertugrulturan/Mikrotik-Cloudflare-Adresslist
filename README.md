@@ -1,0 +1,1 @@
+[![Cloudflare IP Updater](https://github.com/ertugrulturan/Mikrotik-Cloudflare-Adresslist/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/ertugrulturan/Mikrotik-Cloudflare-Adresslist/actions/workflows/main.yml)
