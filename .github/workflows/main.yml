@@ -8,6 +8,10 @@ on:
 jobs:
   update_ip_list:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GIT_EMAIL: info@layer.web.tr
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -28,10 +32,16 @@ jobs:
           done < CloudflareIPs.txt
           echo "$routeros_script" > CloudflareRoute.rsc
 
+      - name: Update Cloudflare Route script
+        run: |
+          # Mevcut CloudflareRoute.rsc dosyasının içeriğini güncelle
+          cat CloudflareRoute.rsc > existing_cloudflare_route.rsc
+          cat CloudflareRoute.rsc > CloudflareRoute.rsc # Yeni script ile mevcut dosyanın içeriğini değiştir
+
       - name: Commit and push changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "${GIT_EMAIL}"
+          git config --local user.name "ertugrulturan"
           git add CloudflareRoute.rsc
           git commit -m "Update Cloudflare IP list"
           git push
