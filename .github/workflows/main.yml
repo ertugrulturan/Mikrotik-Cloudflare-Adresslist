@@ -32,7 +32,7 @@ jobs:
           done < CloudflareIPs.txt
           echo -e "$routeros_script" > CloudflareRoute.rsc
           echo " " >> CloudflareRoute.rsc
-          echo "Updated $(date) - LAYERWEB.COM.TR Project" >> CloudflareRoute.rsc
+          echo "## Updated $(date) - LAYERWEB.COM.TR Project" >> CloudflareRoute.rsc
 
       - name: Update Cloudflare Route script
         run: |
