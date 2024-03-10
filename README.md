@@ -4,3 +4,5 @@ Use (You can add it as a Scheduler),
 /tool fetch url="https://raw.githubusercontent.com/ertugrulturan/Mikrotik-Cloudflare-Adresslist/main/CloudflareRoute.rsc" ; /import file-name=CloudflareRoute.rsc
 ```
 ![mikrotik-cloudflare](screenshot/cloudflare-mikrotik.png)
+
+Tested by RouterOS 7.13.5
