@@ -34,9 +34,7 @@ jobs:
 
       - name: Update Cloudflare Route script
         run: |
-          # Mevcut CloudflareRoute.rsc dosyasının içeriğini güncelle
           cat CloudflareRoute.rsc > existing_cloudflare_route.rsc
-          cat CloudflareRoute.rsc > CloudflareRoute.rsc # Yeni script ile mevcut dosyanın içeriğini değiştir
 
       - name: Commit and push changes
         run: |
