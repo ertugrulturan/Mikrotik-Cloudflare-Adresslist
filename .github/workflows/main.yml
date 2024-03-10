@@ -28,7 +28,7 @@ jobs:
         run: |
           routeros_script="/ip firewall address-list"
           while IFS= read -r ip; do
-            routeros_script+="\nadd address=$ip list=CloudflareRoute comment=CloudflareRoute"
+            routeros_script+="\nadd address=$ip list=CloudflareRoute"
           done < CloudflareIPs.txt
           echo -e "$routeros_script" > CloudflareRoute.rsc
           echo " " >> CloudflareRoute.rsc
