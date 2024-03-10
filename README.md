@@ -2,5 +2,5 @@
 Use( You can add it as a Scheduler ),
 ```
 /tool fetch url="https://raw.githubusercontent.com/ertugrulturan/Mikrotik-Cloudflare-Adresslist/main/CloudflareRoute.rsc"
-/import file-name=script.rsc
+/import file-name=CloudflareRoute.rsc
 ```
