@@ -26,11 +26,11 @@ jobs:
 
       - name: Generate RouterOS script
         run: |
-          routeros_script="/ip firewall address-list\n"
+          routeros_script="/ip firewall address-list"
           while IFS= read -r ip; do
-            routeros_script+="add address=$ip list=CloudflareRoute comment=CloudflareRoute\n"
+            routeros_script+="\nadd address=$ip list=CloudflareRoute comment=CloudflareRoute"
           done < CloudflareIPs.txt
-          echo "$routeros_script" > CloudflareRoute.rsc
+          echo -e "$routeros_script" > CloudflareRoute.rsc
 
       - name: Update Cloudflare Route script
         run: |
