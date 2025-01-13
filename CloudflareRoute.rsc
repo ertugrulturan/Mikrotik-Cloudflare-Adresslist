@@ -15,4 +15,4 @@ add address=104.24.0.0/14 list=CloudflareRoute
 add address=172.64.0.0/13 list=CloudflareRoute
 add address=131.0.72.0/22 list=CloudflareRoute
  
-## Updated Mon Jan  6 01:51:09 UTC 2025 - LAYERWEB.COM.TR Project
+## Updated Mon Jan 13 01:51:55 UTC 2025 - LAYERWEB.COM.TR Project
